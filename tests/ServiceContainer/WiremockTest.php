@@ -5,24 +5,26 @@
 namespace Tests\VPX\ServiceContainer;
 
 use GuzzleHttp\ClientInterface;
+use PHPUnit\Framework\MockObject\Rule\InvocationOrder;
+use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ResponseInterface;
 use VPX\WiremockExtension\Exception\WiremockException;
 use VPX\WiremockExtension\ServiceContainer\Wiremock;
 
-class WiremockTest extends \PHPUnit_Framework_TestCase
+class WiremockTest extends TestCase
 {
     /**
-     * @var ClientInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @var ClientInterface|\PHPUnit\Framework\MockObject\MockObject
      */
     private $guzzleClientMock;
 
     /**
-     * @var ResponseInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @var ResponseInterface|\PHPUnit\Framework\MockObject\MockObject
      */
     private $responseMock;
 
     /**
-     * @var ResponseInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @var ResponseInterface|\PHPUnit\Framework\MockObject\MockObject
      */
     private $resetResponseMock;
 
@@ -135,7 +137,7 @@ class WiremockTest extends \PHPUnit_Framework_TestCase
     /**
      * {@inheritdoc}
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
@@ -164,11 +166,7 @@ class WiremockTest extends \PHPUnit_Framework_TestCase
         );
     }
 
-    /**
-     * @param \PHPUnit_Framework_MockObject_Matcher_Invocation $expectation
-     * @param string $path
-     */
-    private function mockAddMappingWithFile(\PHPUnit_Framework_MockObject_Matcher_Invocation $expectation, string $path)
+    private function mockAddMappingWithFile(InvocationOrder $expectation, string $path)
     {
         $this->guzzleClientMock
             ->expects($expectation)
@@ -186,10 +184,7 @@ class WiremockTest extends \PHPUnit_Framework_TestCase
             ->willReturn($this->responseMock);
     }
 
-    /**
-     * @param \PHPUnit_Framework_MockObject_Matcher_Invocation $expectation
-     */
-    private function mockResetAction(\PHPUnit_Framework_MockObject_Matcher_Invocation $expectation)
+    private function mockResetAction(InvocationOrder $expectation)
     {
         $this->guzzleClientMock
             ->expects($expectation)
