@@ -10,6 +10,7 @@
     "require": {
         "php": ">=7.0.0",
         "behat/behat": "~3.2",
+        "symfony/dependency-injection": "~2.6|~3.0|~4.0",
         "symfony/config": "~2.8|~3.0|~4.0",
         "wiremock-php/wiremock-php": "^2.27"
     },
