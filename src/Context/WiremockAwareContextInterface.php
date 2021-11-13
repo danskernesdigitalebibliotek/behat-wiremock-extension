@@ -4,17 +4,11 @@
  */
 namespace VPX\WiremockExtension\Context;
 
-use VPX\WiremockExtension\ServiceContainer\Wiremock;
+use WireMock\Client\WireMock;
 
 interface WiremockAwareContextInterface
 {
-    /**
-     * @param Wiremock $wiremock
-     */
-    public function setWiremock(Wiremock $wiremock);
+    public function setWiremock(WireMock $wiremock);
 
-    /**
-     * @return Wiremock
-     */
-    public function getWiremock(): Wiremock;
+    public function getWiremock(): WireMock;
 }

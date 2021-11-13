@@ -7,21 +7,31 @@ namespace VPX\WiremockExtension\Context\Initializer;
 use Behat\Behat\Context\Context as ContextInterface;
 use Behat\Behat\Context\Initializer\ContextInitializer;
 use VPX\WiremockExtension\Context\WiremockAwareContextInterface;
-use VPX\WiremockExtension\ServiceContainer\Wiremock;
+use VPX\WiremockExtension\Context\WiremockContext;
+use WireMock\Client\WireMock;
 
 class WiremockAwareInitializer implements ContextInitializer
 {
     /**
-     * @var Wiremock
+     * @var \WireMock\Client\WireMock
      */
     private $wiremock;
 
     /**
-     * @param Wiremock $wiremock
+     * @var string
      */
-    public function __construct(Wiremock $wiremock)
+    private $mappingPath;
+
+    /**
+     * @var array
+     */
+    private $preloadMappings;
+
+    public function __construct(WireMock $wiremock, string $mappingPath, array $preloadMappings)
     {
         $this->wiremock = $wiremock;
+        $this->mappingPath = $mappingPath;
+        $this->preloadMappings = $preloadMappings;
     }
 
     /**
@@ -31,6 +41,10 @@ class WiremockAwareInitializer implements ContextInitializer
     {
         if ($context instanceof WiremockAwareContextInterface) {
             $context->setWiremock($this->wiremock);
+        }
+        if ($context instanceof WiremockContext) {
+            $context->setMappingPath($this->mappingPath);
+            $context->setPreloadMappings($this->preloadMappings);
         }
     }
 }

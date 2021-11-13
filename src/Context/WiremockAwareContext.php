@@ -4,27 +4,21 @@
  */
 namespace VPX\WiremockExtension\Context;
 
-use VPX\WiremockExtension\ServiceContainer\Wiremock;
+use WireMock\Client\WireMock;
 
 class WiremockAwareContext implements WiremockAwareContextInterface
 {
     /**
-     * @var Wiremock
+     * @var \WireMock\Client\WireMock
      */
     private $wiremock;
 
-    /**
-     * {@inheritdoc}
-     */
-    public function setWiremock(Wiremock $wiremock)
+    public function setWiremock(WireMock $wiremock)
     {
         $this->wiremock = $wiremock;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getWiremock(): Wiremock
+    public function getWiremock(): WireMock
     {
         return $this->wiremock;
     }

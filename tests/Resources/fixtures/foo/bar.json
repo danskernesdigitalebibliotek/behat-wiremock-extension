@@ -1,12 +1,11 @@
 {
+  "id": "c83c7650-4470-11ec-81d3-0242ac130003",
   "request": {
     "method": "GET",
     "urlPath": "/path/to/awesome/method"
   },
   "response": {
     "status": 201,
-    "jsonBody": {
-      "success": true
-    }
+    "body": "{\"success\":true}"
   }
 }

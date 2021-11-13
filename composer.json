@@ -11,7 +11,7 @@
         "php": ">=7.0.0",
         "behat/behat": "~3.2",
         "symfony/config": "~2.8|~3.0|~4.0",
-        "guzzlehttp/guzzle": "~6.0"
+        "wiremock-php/wiremock-php": "^2.27"
     },
     "require-dev": {
         "behat/mink-extension": "^2.1",
