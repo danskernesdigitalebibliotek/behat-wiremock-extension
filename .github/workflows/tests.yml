@@ -5,14 +5,24 @@ jobs:
   ci:
     name: Run tests
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php: ["7.4", "8.0"]
+        composer-args: ["--prefer-stable"]
+        include:
+          - php: "7.4"
+            composer-args: "--prefer-lowest"
+      fail-fast: false
+    services:
+      wiremock:
+        image: wiremock/wiremock
+        ports:
+          - 8080:8080
     steps:
       - uses: actions/checkout@v2
       - name: Setup PHP with specific version of PECL extension
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.0'
-      - run: composer install --prefer-dist
-      - run: docker run -d --name wiremock -p 8080:8080 wiremock/wiremock
-      - run: sleep 5
+          php-version: ${{ matrix.php }}
+      - run: composer update ${{ matrix.composer-args }}
       - run: make test
-      - run: docker rm -f wiremock
