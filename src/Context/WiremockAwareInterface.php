@@ -6,7 +6,7 @@ namespace VPX\WiremockExtension\Context;
 
 use WireMock\Client\WireMock;
 
-interface WiremockAwareContextInterface
+interface WiremockAwareInterface
 {
     public function setWiremock(WireMock $wiremock);
 

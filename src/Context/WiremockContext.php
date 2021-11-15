@@ -13,8 +13,9 @@ use WireMock\Client\MappingBuilder;
 use WireMock\Stubbing\StubImportBuilder;
 use WireMock\Stubbing\StubMapping;
 
-class WiremockContext extends WiremockAwareContext implements ContextInterface
+class WiremockContext implements WiremockAwareInterface, ContextInterface
 {
+    use WiremockAware;
 
     /**
      * @var string
