@@ -1,4 +1,4 @@
 /vendor/
 /build/
 !/build/.gitkeep
-./composer.lock
+/composer.lock
