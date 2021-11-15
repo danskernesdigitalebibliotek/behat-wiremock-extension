@@ -6,7 +6,7 @@ namespace VPX\WiremockExtension\Context;
 
 use WireMock\Client\WireMock;
 
-class WiremockAwareContext implements WiremockAwareContextInterface
+trait WiremockAware
 {
     /**
      * @var \WireMock\Client\WireMock
