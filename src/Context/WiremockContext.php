@@ -4,7 +4,6 @@
  */
 namespace VPX\WiremockExtension\Context;
 
-use Behat\Behat\Context\Context as ContextInterface;
 use Behat\Behat\Definition\Call\Given;
 use Behat\Behat\Hook\Call\BeforeScenario;
 use Behat\Gherkin\Node\TableNode;
@@ -13,7 +12,7 @@ use WireMock\Client\MappingBuilder;
 use WireMock\Stubbing\StubImportBuilder;
 use WireMock\Stubbing\StubMapping;
 
-class WiremockContext implements WiremockAwareInterface, ContextInterface
+class WiremockContext implements WiremockAwareInterface
 {
     use WiremockAware;
 
